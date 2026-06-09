@@ -1,4 +1,5 @@
 import { RootConfig } from '@/configuration/schemes';
+import { AppConfig } from '@/configuration/schemes/appConfig.schema';
 import { Logger } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
 import { validateSync } from 'class-validator';
@@ -6,12 +7,17 @@ import { validateSync } from 'class-validator';
 const logger = new Logger('ConfigFactory');
 
 export default (): RootConfig => {
-  const configInstance = plainToInstance(RootConfig, process.env, {
+  const appConfigInstance = plainToInstance(AppConfig, process.env, {
     exposeDefaultValues: true,
-    strategy: 'excludeAll',
   });
 
-  const errors = validateSync(configInstance, { skipMissingProperties: false });
+  const configInstance = new RootConfig();
+  configInstance.app = appConfigInstance;
+
+  const errors = validateSync(configInstance, {
+    skipMissingProperties: false,
+    whitelist: true,
+  });
 
   if (errors.length > 0) {
     logger.error(`Error in configuration`);

@@ -24,6 +24,8 @@ export class AppConfig {
   port!: number;
 
   @Expose({ name: 'HOST' })
+  @IsString({ message: 'The host must be a string' })
+  @IsNotEmpty({ message: 'The host must not be empty' })
   @IsFQDN(
     { require_tld: false },
     { message: 'The host must be a valid domain or localhost.' },
