@@ -1,0 +1,20 @@
+enum UserRole {
+  USER
+  ADMIN
+  MODERATOR
+  EDITOR
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  phoneNumber String @unique @map("phone_number")
+  email String? @unique
+  password String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  role UserRole @default(USER)
+  devices Device[]
+  transactions Transaction[]
+
+  @@map("users")
+}
