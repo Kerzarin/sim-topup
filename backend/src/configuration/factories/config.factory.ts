@@ -3,6 +3,9 @@ import { AppConfig } from '@/configuration/schemes/appConfig.schema';
 import { Logger } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
 import { validateSync } from 'class-validator';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const logger = new Logger('ConfigFactory');
 
