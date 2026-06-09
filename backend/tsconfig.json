@@ -21,7 +21,9 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@configuration/*": ["./src/configuration/*"],
+      "@modules/*": ["./src/modules/*"]
     }
   },
   "include": ["src/**/*"],
