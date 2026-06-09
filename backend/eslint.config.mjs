@@ -24,7 +24,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['prisma/prisma.config.ts'],
+    files: ['prisma.config.ts'],
     ...tseslint.configs.disableTypeChecked,
   },
   {
