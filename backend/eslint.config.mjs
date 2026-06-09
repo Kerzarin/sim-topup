@@ -24,6 +24,10 @@ export default tseslint.config(
     },
   },
   {
+    files: ['prisma.config.ts'],
+    ...tseslint.configs.disableTypeChecked,
+  },
+  {
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-floating-promises': 'warn',
